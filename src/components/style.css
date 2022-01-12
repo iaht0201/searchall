@@ -1,0 +1,42 @@
+/*navbar*/
+*{
+    padding: 0px; 
+    margin: 0px; 
+}
+.navbar {
+    background: #1A1A1A !important;
+    border-radius: 0px !important;
+    color : #ffff ; 
+    font-family: 'Montserrat' ;
+    height: 68px;
+}
+.navbar_item {
+    display: flex;
+    align-items: center;
+}
+.navbar_title {
+    font-size: 24px; 
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 8px;
+}
+.navbar-visible {
+    display: none;
+}
+/*footer*/
+.footer {
+  
+    background: #1A1A1A !important;
+    border-radius: 0px !important;
+    color : #ffff ; 
+    font-family: 'Inter' ;
+    height: 50px;
+    align-items: center;
+    display: flex;
+}
+.footer_infor {
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter';
+}

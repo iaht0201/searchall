@@ -1,0 +1,140 @@
+*{
+    padding : 0 ; 
+    margin : 0 ;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Montserrat';
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url(../../font/Montserrat-Medium.ttf);
+}
+@font-face {
+    font-family: 'Inter';
+    src: url(../../font/Inter.ttf);
+}
+.card {
+    border: 0px;
+    font-family: 'Montserrat';
+    height: 100vh;
+}
+
+
+
+/*login*/
+.register-frame {
+    display: block;
+    width: 350px;
+    height: 554px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding : 16px ;
+}
+.card-body {
+    display: flex;
+    align-items: center;
+}
+.btn-login{
+    width: 100%;
+    background: #1A1A1A;
+    border-radius: 24px;
+    height: 44px ;
+}
+.password-frame {
+    position: relative;
+}
+.visible-password{
+    position: absolute;
+    top: 40%;
+    right: 0;
+    margin-right: 10px;
+}
+.login-title {
+    font-weight: bold;
+    margin: 0 0 24px 0;
+}
+.form-label {
+    margin-bottom: 14px ;
+}
+.form-control {
+    padding: 11px 14px;
+    color :#C1C1C1 ;
+}
+.btn-login {
+    font-weight: bold;
+    margin : 8px 0 24px 0 ;
+}
+.forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: underline;
+    margin : 16px ;
+}
+.register {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: #757575; ;
+}
+.register-account {
+    font-size: 16px;
+    color: black;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.login-request {
+    display: none;
+}
+
+@media screen and (max-width: 375px) {
+    /*navbar*/
+    .navbar { 
+     height: 52px;
+    }
+    .navbar_title {
+        font-size: 14px;
+    }
+    .navbar_login {
+        display: none;
+    }
+    .navbar-visible  {
+        display: block;
+    }
+    /*login*/
+    .login-frame {
+        padding: 20px;
+        display: block;
+        width: 375px;
+        background: #FFFFFF;
+        height: 100%;
+    }
+    .login-title {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 12px 0 20px 0;
+
+    }
+    .login-request {
+        display: block;
+        font-size: 16px;
+        color: #757575;
+        margin-bottom: 64px;
+    }
+    .card-body {
+        padding: 0;
+    }
+    .btn-login {
+        font-weight: normal;
+        font-size: 14px;
+    }
+    .footer {
+        display: none;
+    }
+    .logout , .account {
+        margin: 16px 23px ;
+        cursor: pointer;
+        font-size: 16px;
+    }
+  }

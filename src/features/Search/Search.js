@@ -1,7 +1,7 @@
-
 import { Col, Container, Row } from "react-bootstrap";
 import { SearchBar } from "../../components/SearchBar";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./Search.css";
 export default function Search() {
   return (
@@ -14,7 +14,7 @@ export default function Search() {
               Enter a search term below to search the corpus of William
               Shakespeare.
             </p>
-            <SearchBar/>
+            <SearchBar />
           </div>
         </Col>
       </Row>
