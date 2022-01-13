@@ -2,6 +2,8 @@ import Search from "../src/features/Search/Search";
 import LoginForm from "./features/Login/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RegisterForm from "./features/Register/Register";
+import Routes from "./routes";
+
 
 function App() {
   // const Logout = () => {
@@ -11,7 +13,7 @@ function App() {
   // };
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Switch>
           <Route path="/" exact>
             <LoginForm />
@@ -22,7 +24,8 @@ function App() {
             <RegisterForm />
           </Route>
         </Switch>
-      </Router>
+      </Router> */}
+     <Routes/>
     </div>
   );
 }

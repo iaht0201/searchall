@@ -15,14 +15,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Login/Login.css";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
+import { setUsers } from "../../localStorage";
 export default function RegisterForm() {
-  // const adminUser = Account.account();
-  const [users, setUsers] = useState({});
-  const [newUser, setNewUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [fullname, setFullName] = useState("");
+  const [password, setPasssword] = useState("");
+  const [email, setEmail] = useState("");
+  const [erro, setErro] = useState("");
+  const handleRegister = () => {
+    // e.preventDefault();
+    let data = {
+      fullname,
+      email,
+      password,
+    };
+  (  fullname !== "" &&
+  email !== "" &&
+  password!=="")?setUsers(data):alert({erro})
+  };
 
   const [passwordShow, setPasswordShow] = useState(false);
   const [togglenav, setTogglenav] = useState(true);
@@ -33,22 +42,7 @@ export default function RegisterForm() {
   const toggleVissiblityNavbar = () => {
     setTogglenav(togglenav ? false : true);
   };
-  console.log("user", users);
-  const Register = (e) => {
-    setUsers((user) => user.concat(newUser));
-    console.log("user", users);
-    // localStorage.setItem("account",users)
-    localStorage.setItem("users", JSON.stringify(users));
-    console.log(localStorage.getItem("users"));
-    alert("Đăng ký thành công");
-  };
-  console.log(users);
-  localStorage.setItem("users", JSON.stringify(users));
-  console.log(localStorage.getItem("users"));
-  // useEffect(() => {
-  //   localStorage.setItem("users", JSON.stringify(users));
-  //   console.log(localStorage.getItem("users"));
-  // }, [users]);
+
   return (
     <Fragment>
       <Card>
@@ -59,7 +53,7 @@ export default function RegisterForm() {
         />
         {togglenav ? (
           <CardBody>
-            <Form className="register-frame">
+            <Form className="register-frame" onSubmit={handleRegister}>
               <div className="register-title"> Register </div>
               <FormGroup>
                 <Label for="FullName">FullName</Label>
@@ -67,9 +61,7 @@ export default function RegisterForm() {
                   className="InputName"
                   placeholder="Enter your name"
                   type="text"
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, name: e.target.value })
-                  }
+                  onChange={(e) => setFullName(e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
@@ -78,9 +70,7 @@ export default function RegisterForm() {
                   className="Email"
                   placeholder="name@example.com"
                   type="email"
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, email: e.target.value })
-                  }
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
@@ -91,9 +81,7 @@ export default function RegisterForm() {
                     className="Password"
                     placeholder="Enter your password"
                     type={passwordShow ? "text" : "password"}
-                    onChange={(e) =>
-                      setNewUser({ ...newUser, password: e.target.value })
-                    }
+                    onChange={(e) => setPasssword(e.target.value)}
                   />
                   <img
                     className="visible-password"
@@ -121,7 +109,7 @@ export default function RegisterForm() {
                 </div>
               </FormGroup>{" "}
               <Link to="/">
-                <Button className="btn-register" onClick={Register}>
+                <Button className="btn-register" onClick={handleRegister}>
                   REGISTER
                 </Button>
               </Link>

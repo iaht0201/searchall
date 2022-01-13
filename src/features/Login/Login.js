@@ -4,7 +4,7 @@ import show from "../../image/show.svg";
 import hide from "../../image/hide.svg";
 
 import Header from "../../components/header/Header";
-
+import { getUsers } from "../../localStorage";
 import {
   Button,
   Card,
@@ -15,61 +15,34 @@ import {
   Label,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import "./Login.css";
 import Footer from "../../components/footer/Footer";
+
 export default function LoginForm() {
-  // const adminUser = {
-  //   name: "Wiliam",
-  //   email: "admin@admin.com",
-  //   password: "123456",
-  // };
-  // const adminUser = Account.account();
-  const a = JSON.parse(localStorage.getItem("users"));
-  const [state, setstate] = useState({});
-  useEffect(() => {
-    setstate(localStorage.getItem("users"));
-  }, []);
-  const [user, setUser] = useState({ name: "", email: "" });
+  const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
   const [togglenav, setTogglenav] = useState(true);
   const toggleVisiblityPassword = () => {
-    console.log(passwordShow);
     setPasswordShow(passwordShow ? false : true);
   };
   const toggleVissiblityNavbar = () => {
     setTogglenav(togglenav ? false : true);
   };
-  console.log(a);
+  const [Login, setLogin] = useState(false);
+  useEffect(() => {
+    setUsers(getUsers());
+    console.log(Login)
+  }, [getUsers],Login);
   const [details, setDetails] = useState({ email: "", password: "" });
-  let Login = () => {
-    state.find((users) => {
-      console.log(details);
-      if (
-        details.email === users.email &&
-        details.password === users.password
-      ) {
-        console.log("Logged in");
-        setUser({
-          ...user,
-          email: details.email,
-        });
-        console.log(user);
-      } else {
-        console.log(user);
-        setError("details not match");
-        console.log("details not match");
-      }
-    });
-  };
-  console.log(localStorage.getItem("users"));
-  const Logout = () => {
-    setUser({ ...user, email: "" });
-
-    console.log("Logout", user);
-  };
+  const handleLogin = ()=> {
+    let a = users.find(user=>user.email===details.email) ; 
+    setLogin((a.email===details.email && a.password===details.password)?true:false) ;
+    console.log(a) ;
+  }
+  
   return (
     <Fragment>
       <Card>
@@ -80,7 +53,7 @@ export default function LoginForm() {
         />
         {togglenav ? (
           <CardBody>
-            <Form className="login-frame">
+            <Form className="login-frame" onSubmit={handleLogin}>
               <div className="login-title"> Login </div>
               <div className="login-request ">
                 Please enter your email address and password below
@@ -119,13 +92,9 @@ export default function LoginForm() {
                 </div>
               </FormGroup>
               <div className="forgot-password">Forgot password?</div>
-
-              <Link to={user.email !== "" ? "/search" : "/"}>
-                <Button className="btn-login" onClick={Login}>
-                  Login
-                </Button>{" "}
+              <Link to={Login?"/search":"/"}>
+                <Button className="btn-login" onClick={handleLogin}>Login</Button>{" "}
               </Link>
-
               <div className="register">
                 Need an account? {}
                 <Link to="/register">
@@ -139,10 +108,7 @@ export default function LoginForm() {
           <div className="navbar-show">
             <div className="account"> Account </div>
             <Link to="/">
-              <div className="logout" onClick={Logout}>
-                {" "}
-                Logout
-              </div>
+              <div className="logout"> Logout</div>
             </Link>
           </div>
         )}
