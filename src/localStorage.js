@@ -1,9 +1,9 @@
-import Account from "./api/Account";
+// import Account from "./api/Account";
 
 const getUsers = () => JSON.parse(localStorage.getItem("member"));
 
 const setUsers = (user) => {
-  const users = Account.account();
+  // const users = Account.account();
   let arrayUsers = [];
   if (getUsers() === null) {
     arrayUsers.push(user);

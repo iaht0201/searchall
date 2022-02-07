@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import Logo from "../../image/Vector.png";
-import show from "../../image/show.svg";
-import hide from "../../image/hide.svg";
 import navbarhiden from "../../image/navbar.svg";
 import exit from "../../image/exit.svg";
 import "../style.css";
 import { Link } from "react-router-dom";
-export default function Header({ toggleVissiblityNavbar, togglenav, isLogin }) {
+import iconProfile from "../../image/profile.svg";
+export default function Header({
+  toggleVissiblityNavbar,
+  togglenav,
+  isLogin,
+  handleLogin,
+  type,
+}) {
+  const [typea, setTypea] = useState(type);
+  console.log(typea);
   return (
     <CardHeader className="navbar">
       <div className="container">
@@ -15,16 +22,18 @@ export default function Header({ toggleVissiblityNavbar, togglenav, isLogin }) {
           <img src={Logo} alt="Logo" />
           <span className="navbar_title">George Gurdjieff </span>
         </div>
-        {isLogin ? (
-          <Link to="/register">
-            {" "}
-            <div className="navbar_login">Sign up</div>
+        {!handleLogin ? (
+          <Link to={`${isLogin ? "/register" : "/"}`}>
+            <div className="navbar_login">
+              {`${isLogin ? "Sign up" : "Login"}`}
+            </div>
           </Link>
         ) : (
-          <Link to="/">
-            {" "}
-            <div className="navbar_login">Login</div>
-          </Link>
+          <div className="navbar_login navbar-login_item">
+            <img src={iconProfile} alt="iconProfile" className="iconProfile" />
+            <div className="navbar-login_profile">Profile </div>
+          </div>
+
         )}
         {togglenav ? (
           <img

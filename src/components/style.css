@@ -24,6 +24,9 @@
 .navbar-visible {
     display: none;
 }
+.iconProfile {
+    margin-right: 10px;
+}
 /*footer*/
 .footer {
   
@@ -40,3 +43,113 @@
     justify-content: center;
     font-family: 'Inter';
 }
+/*navbar member*/
+.member-frame {
+    display: flex;
+}
+.selected-navbar{
+    width: 255px;
+    height: 549px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+}
+.selected-list {
+    list-style: none;
+}
+.selected-list li{
+    margin: 24px 0px 24px -24px;
+    font-family: 'Montserrat';
+    color:black ;
+}
+.selected-list li:focus {
+    background: red;
+}
+.member-avt {
+    background: #FC663E;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right:12px ;
+}
+.member-infor {
+    display: flex;
+    align-items: center;
+}
+.member-name {
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+li {
+    cursor: pointer;
+}
+/*payment*/
+
+@media screen and (max-width : 900px) {
+    .selected-navbar{
+        width: 200px;
+    }
+}
+@media screen and (max-width : 900px) {
+    .selected-navbar{
+        display: none;
+    }
+}
+/*Loading Effect*/
+.loading-effect span {
+    width: 8vmin;
+    height: 8vmin;
+    border-radius: 4vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation-name: move;
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 0.8);
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    top: calc(50% - 4vmin);
+    left: 50%;
+    transform-origin: -4vmin center;
+  }
+.loading-effect span:nth-child(1) {
+    background: #35b0ab;
+    animation-delay: -0.5s;
+    opacity: 0;
+  }
+.loading-effect span:nth-child(2) {
+    background: #35b0ab;
+    animation-delay: -1s;
+    opacity: 0;
+  }
+.loading-effect span:nth-child(3) {
+    background: #c5f0a4;
+    animation-delay: -1.5s;
+    opacity: 0;
+  }
+.loading-effect span:nth-child(4) {
+    background: #c5f0a4;
+    animation-delay: -2s;
+    opacity: 0;
+  }
+.loading-effect span:nth-child(5) {
+    background: #226b80;
+    animation-delay: -2.5s;
+    opacity: 0;
+  }
+.loading-effect span:nth-child(6) {
+    background: #c5f0a4;
+    animation-delay: -3s;
+    opacity: 0;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: scale(1) rotate(0deg) translate3d(0, 0, 1px);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      z-index: 10;
+      transform: scale(0) rotate(360deg) translate3d(0, 0, 1px);
+    }
+  }

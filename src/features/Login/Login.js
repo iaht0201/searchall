@@ -1,10 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
-
 import show from "../../image/show.svg";
 import hide from "../../image/hide.svg";
-
 import Header from "../../components/header/Header";
-import { getUsers } from "../../localStorage";
 import {
   Button,
   Card,
@@ -15,14 +12,20 @@ import {
   Label,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useParams } from "react-router-dom";
-
-import "./Login.css";
+import { Link, useHistory } from "react-router-dom";
+import "../Style.css";
 import Footer from "../../components/footer/Footer";
 
 export default function LoginForm() {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("user-infor"))) {
+      history.push("/member");
+    }
+  }, []);
+
   const [passwordShow, setPasswordShow] = useState(false);
   const [togglenav, setTogglenav] = useState(true);
   const toggleVisiblityPassword = () => {
@@ -31,18 +34,29 @@ export default function LoginForm() {
   const toggleVissiblityNavbar = () => {
     setTogglenav(togglenav ? false : true);
   };
-  const [Login, setLogin] = useState(false);
-  useEffect(() => {
-    setUsers(getUsers());
-    console.log(Login)
-  }, [getUsers],Login);
-  const [details, setDetails] = useState({ email: "", password: "" });
-  const handleLogin = ()=> {
-    let a = users.find(user=>user.email===details.email) ; 
-    setLogin((a.email===details.email && a.password===details.password)?true:false) ;
-    console.log(a) ;
+  const [error, setError] = useState();
+  async function handleLogin() {
+    console.warn(email, password);
+    let item = { email, password };
+    console.log(item);
+    console.log(JSON.stringify(item));
+    let respon = await fetch("http://44.193.147.154:8080/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    respon = await respon.json();
+    console.log(respon);
+    if (respon.success) {
+      localStorage.setItem("user-infor", JSON.stringify(respon));
+      history.push("/member");
+    } else {
+      setError(respon.error);
+    }
   }
-  
   return (
     <Fragment>
       <Card>
@@ -50,24 +64,25 @@ export default function LoginForm() {
           toggleVissiblityNavbar={toggleVissiblityNavbar}
           togglenav={togglenav}
           isLogin={true}
+          handleLogin={false}
         />
         {togglenav ? (
           <CardBody>
-            <Form className="login-frame" onSubmit={handleLogin}>
+            <Form className="login-frame">
               <div className="login-title"> Login </div>
-              <div className="login-request ">
-                Please enter your email address and password below
-              </div>
+              <div className="login-request "></div>
               <FormGroup>
+                <div className="error-login">{error}</div>
                 <Label for="exampleEmail">Your Email</Label>
+
                 <Input
                   className="Email"
                   placeholder="Enter your name"
                   type="email"
-                  value={details.value}
-                  onChange={(e) =>
-                    setDetails({ ...details, email: e.target.value })
-                  }
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </FormGroup>
               <FormGroup>
@@ -78,10 +93,10 @@ export default function LoginForm() {
                     id="Password"
                     placeholder="Enter your password"
                     type={passwordShow ? "text" : "password"}
-                    value={details.password}
-                    onChange={(e) =>
-                      setDetails({ ...details, password: e.target.value })
-                    }
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   />
                   <img
                     className="visible-password"
@@ -92,9 +107,9 @@ export default function LoginForm() {
                 </div>
               </FormGroup>
               <div className="forgot-password">Forgot password?</div>
-              <Link to={Login?"/search":"/"}>
-                <Button className="btn-login" onClick={handleLogin}>Login</Button>{" "}
-              </Link>
+              <Button className="btn-login" onClick={handleLogin}>
+                Login
+              </Button>{" "}
               <div className="register">
                 Need an account? {}
                 <Link to="/register">
@@ -105,12 +120,7 @@ export default function LoginForm() {
             </Form>
           </CardBody>
         ) : (
-          <div className="navbar-show">
-            <div className="account"> Account </div>
-            <Link to="/">
-              <div className="logout"> Logout</div>
-            </Link>
-          </div>
+          <div>{/* <Logout /> */}</div>
         )}
         <Footer />
       </Card>

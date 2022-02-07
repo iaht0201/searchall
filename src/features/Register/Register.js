@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import show from "../../image/show.svg";
 import hide from "../../image/hide.svg";
 import Header from "../../components/header/Header";
@@ -12,26 +12,54 @@ import {
   Label,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Login/Login.css";
+import "../Style.css";
 import Footer from "../../components/footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { setUsers } from "../../localStorage";
+import Logout from "../../components/Logout/Logout";
 export default function RegisterForm() {
+  /*Register */
+
+  /* */
+
+  const history = useHistory();
+  const handleRegister = async () => {
+    let param = { name, email, password, password_confirmation };
+    let respon = await fetch("http://44.193.147.154:8080/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    respon = await respon.json();
+    if (respon.success) {
+      localStorage.setItem("user-infor" ,JSON.stringify(respon) )
+      history.push("/member");
+    } else {
+      setError(respon.error);
+    }
+    console.log(respon);
+    // 
+  };
+  const [name, setName] = useState("");
   const [fullname, setFullName] = useState("");
   const [password, setPasssword] = useState("");
   const [email, setEmail] = useState("");
-  const [erro, setErro] = useState("");
-  const handleRegister = () => {
-    // e.preventDefault();
-    let data = {
-      fullname,
-      email,
-      password,
-    };
-  (  fullname !== "" &&
-  email !== "" &&
-  password!=="")?setUsers(data):alert({erro})
-  };
+  const [error, setError] = useState("");
+  const [password_confirmation, setPassword_confirmation] = useState("");
+  // const handleRegistera = () => {
+  //   // e.preventDefault();
+  //   let data = {
+  //     fullname,
+  //     email,
+  //     password,
+  //   };
+  //   fullname !== "" && email !== "" && password !== ""
+  //     ? setUsers(data)
+  //     : alert({ erro });
+  // };
 
   const [passwordShow, setPasswordShow] = useState(false);
   const [togglenav, setTogglenav] = useState(true);
@@ -50,6 +78,7 @@ export default function RegisterForm() {
           toggleVissiblityNavbar={toggleVissiblityNavbar}
           togglenav={togglenav}
           isLogin={false}
+          handleLogin={false}
         />
         {togglenav ? (
           <CardBody>
@@ -61,7 +90,7 @@ export default function RegisterForm() {
                   className="InputName"
                   placeholder="Enter your name"
                   type="text"
-                  onChange={(e) => setFullName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
@@ -99,6 +128,7 @@ export default function RegisterForm() {
                     className="ConfirmPassword"
                     placeholder="Re-type password"
                     type={passwordShow ? "text" : "password"}
+                    onChange={(e) => setPassword_confirmation(e.target.value)}
                   />
                   <img
                     className="visible-password"
@@ -108,11 +138,9 @@ export default function RegisterForm() {
                   />
                 </div>
               </FormGroup>{" "}
-              <Link to="/">
-                <Button className="btn-register" onClick={handleRegister}>
-                  REGISTER
-                </Button>
-              </Link>
+              <Button className="btn-register" onClick={handleRegister}>
+                REGISTER
+              </Button>
               <div className="terms">
                 By using George Gurdjieff you agree to our{" "}
                 <span className="term"> Terms</span>
@@ -120,10 +148,7 @@ export default function RegisterForm() {
             </Form>
           </CardBody>
         ) : (
-          <div className="navbar-show">
-            <div className="account"> Account </div>
-            <div className="logout"> Logout</div>
-          </div>
+          <Logout />
         )}
         <Footer />
       </Card>

@@ -1,32 +1,17 @@
-import Search from "../src/features/Search/Search";
-import LoginForm from "./features/Login/Login";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RegisterForm from "./features/Register/Register";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Routes from "./routes";
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+const stripePromise = loadStripe(
+  "pk_test_51JsIa2B3ETQpYPYdcEkUiV3fzksrxi5WrIkuHnUaRcP9LimsOxNxn0a9oCy5cTy5pcHtUa78RKROgmlAbGNyeI3T00kpKaZFW4"
+);
 function App() {
-  // const Logout = () => {
-  //   setUser({ ...user, email: "" });
-
-  //   console.log("Logout", user);
-  // };
   return (
-    <div className="App">
-      {/* <Router>
-        <Switch>
-          <Route path="/" exact>
-            <LoginForm />
-          </Route>
-          <Route path="/search" component={Search} />
-
-          <Route path="/register">
-            <RegisterForm />
-          </Route>
-        </Switch>
-      </Router> */}
-     <Routes/>
-    </div>
+    <Elements stripe={stripePromise}>
+      <div className="App">
+        <Routes />
+      </div>
+    </Elements>
   );
 }
 
