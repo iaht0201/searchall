@@ -10,12 +10,12 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import ConfirmImg from "../../image/confirm.svg";
+import Cancel from "../../image/cancelicon.svg";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Logout from "../Logout/Logout";
 
-export default function ConfirmThreeMonth() {
+export default function CancelthreeMonth() {
   const [togglenav, setTogglenav] = useState(true);
   const history = useHistory();
   const toggleVissiblityNavbar = () => {
@@ -37,12 +37,11 @@ export default function ConfirmThreeMonth() {
         {togglenav ? (
           <CardBody>
             <div className="frame-confirm">
-              <img src={ConfirmImg} alt="confirm" />
-              <div className="confirm-title">You’re Free trial now!</div>
+              <img src={Cancel} alt="cancel" />
+              <div className="confirm-title">Free trial cancelled!</div>
               <div className="confirm-content">
-                Your purchase is complete. You will not be charged until after
-                your trial expires on December 15, 2021. If you change your
-                mind, you can cancel anytime by going to your Account.
+                Your purchase is cancelled. You can Subscription anytime by
+                going to your Account.
               </div>
               <Button className="btn-confirm" onClick={route}>
                 back to profile

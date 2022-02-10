@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import SelectMenu from "../../components/navbar/SelectMenu";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 export default function AvailablePlans({ userPlan }) {
-  console.log("userPlan", userPlan);
+  const API_HOST = process.env.REACT_APP_API_HOST;
+  const API_URLBASE = API_HOST;
   const [confirm3, setConfirm3] = useState(false);
   const [confirm6, setConfirm6] = useState(false);
   const [loading, setloading] = useState(true);
-  const [price, setPrice] = useState("");
-  console.log(userPlan);
   const token = JSON.parse(localStorage.getItem("user-infor")).data;
   const history = useHistory();
   const handleDelete = async (price) => {
@@ -24,17 +23,16 @@ export default function AvailablePlans({ userPlan }) {
           Authorization: `${token}`,
         },
         body: JSON.stringify(param),
-      })
-        .then((respon) => respon.json())
-        .then(() => {
-          history.push("/");
-        });
+      }).then((respon) => respon.json());
     } catch (error) {
       console.log(error);
     }
   };
-  const handleCancel = (price) => {
+  const handleCancel = (price, month) => {
     handleDelete(price);
+    if (month === 3) {
+      history.push("/cancel_threemonth");
+    } else history.push("/cancel_sixmonth");
   };
   const register_card = (userPlan) => {
     userPlan.filter((e) => {
@@ -43,6 +41,7 @@ export default function AvailablePlans({ userPlan }) {
           setConfirm3(true);
           setloading(false);
         } else {
+          history.push();
           setConfirm3(false);
           setloading(false);
         }
@@ -79,34 +78,33 @@ export default function AvailablePlans({ userPlan }) {
             <Button
               className="btn-select_free-trial"
               onClick={() => {
-                handleCancel(userPlan[0].pk);
+                handleCancel(userPlan[0].pk, 3);
               }}
             >
               Cancel
             </Button>
           </div>
         ) : (
-          <div>
-            {" "}
-            <div className="free-trial">
-              <div className="banner-credit_header">
-                <div className="banner-credit_title">Free trial</div>
-                <div className="banner-month">for 1 month</div>
-              </div>
-              <div className="banner-content banner-content_free_trial">
-                You will be unlocked to read the first chapter of several books.
-              </div>
-              <Link to="/free-trial">
-                {" "}
-                <Button className="btn-select_free-trial">Select</Button>
-              </Link>
+          <div className="free-trial">
+            <div className="banner-credit_header">
+              <div className="banner-credit_title">Free trial</div>
+              <div className="banner-month">for 1 month</div>
             </div>
+            <div className="banner-content banner-content_free_trial">
+              You will be unlocked to read the first chapter of several books.
+            </div>
+            <Link to="/free-trial">
+              {" "}
+              <Button className="btn-select_free-trial">Select</Button>
+            </Link>
           </div>
         )}
         {/* */}
         {confirm6 ? (
           <div className="book-premium">
             <div className="banner-credit_header">
+              <div className="test">
+                 </div>
               <div className="banner-credit_title">Book Premium</div>
               <div className="banner-month">One-time payment</div>
             </div>
@@ -116,11 +114,11 @@ export default function AvailablePlans({ userPlan }) {
             <div className="book-premium_selects">
               <Button
                 className="btn-select_book-premium"
-                onClick={()=>handleCancel(userPlan[1].pk)}
+                onClick={() => handleCancel(userPlan[1].pk, 6)}
               >
                 Cancel
               </Button>
-              =<div className="book-premium_price">$199</div>
+              <div className="book-premium_price">$199</div>
             </div>
           </div>
         ) : (

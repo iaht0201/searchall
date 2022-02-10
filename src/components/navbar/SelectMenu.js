@@ -1,12 +1,10 @@
 import { FormControl, MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import Account from "../../features/Member/Account";
 
+import { useHistory } from "react-router-dom";
 export default function SelectMenu() {
   const [item, setItem] = useState("Available plans");
-  const [route, setRoute] = useState(true);
-
+  const history = useHistory();
   const handleChange = (event) => {
     setItem(event.target.value);
   };
@@ -15,8 +13,18 @@ export default function SelectMenu() {
       <div className="select-nav_items">
         <FormControl margin="dense">
           <Select onChange={handleChange} value={item} displayEmpty>
-            <MenuItem  value={"Available plans"}>Available plans</MenuItem>
-            <MenuItem value={"Avail"}>Account overview</MenuItem>
+            <MenuItem
+              value={"Available plans"}
+              onClick={() => history.push("/member")}
+            >
+              Available plans
+            </MenuItem>
+            <MenuItem
+              value={""}
+              onClick={() => history.push("/Change_password")}
+            >
+              Account overview
+            </MenuItem>
           </Select>
         </FormControl>
       </div>

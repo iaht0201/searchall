@@ -1,453 +1,488 @@
-        *{
-            padding : 0 ; 
-            margin : 0 ;
-            box-sizing: border-box;
-            font-size: 14px;
-            font-family: 'Montserrat';
-        }
+*{
+    padding : 0 ; 
+    margin : 0 ;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Montserrat';
+}
 
 
-        @font-face {
-            font-family: 'Montserrat';
-            src: url(../font/Montserrat-Medium.ttf);
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url(../font/Inter.ttf);
-        }
-        .card {
-            border: 0px;
-            font-family: 'Montserrat';
-            height: 100vh;
-        }
+@font-face {
+    font-family: 'Montserrat';
+    src: url(../font/Montserrat-Medium.ttf);
+}
+@font-face {
+    font-family: 'Inter';
+    src: url(../font/Inter.ttf);
+}
+.card {
+    border: 0px;
+    font-family: 'Montserrat';
+    height: 100vh;
+}
 
 
 
-        /*login*/
-        .login-frame , .register-frame , .payment-frame{
-            display: block;
-            width: 350px;
-            height: 402px;
-            margin: 0 auto;
-            background: #FFFFFF;
-            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
-            border-radius: 4px;
-            padding : 16px ;
-        }
-        .payment-frame {
-            margin-top: 24px;
-            width: 382px;
-            height: 682px;
-        }
-        .card-body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .btn-login , .btn-register , .btn-credit{
-            width: 100%;
-            background: #1A1A1A;
-            border-radius: 24px;
-            height: 44px ;
-        }
-        .password-frame {
-            position: relative;
-        }
-        .visible-password{
-            position: absolute;
-            top: 40%;
-            right: 0;
-            margin-right: 10px;
-        }
-        .login-title, .register-title {
-            font-weight: bold;
-            margin: 0 0 24px 0;
-        }
-        .form-label {
-            margin-bottom: 14px ;
-        }
-        .form-control {
-            padding: 11px 14px;
-            color :#C1C1C1 ;
-        }
-        .btn-login {
-            font-weight: bold;
-            margin : 8px 0 24px 0 ;
-        }
-        .forgot-password {
-            display: flex;
-            justify-content: flex-end;
-            text-decoration: underline;
-            margin : 16px ;
-        }
-        .register , .terms {
-            display: flex;
-            justify-content: center;
-            font-size: 16px;
-            color: #757575; ;
-        }
-        .terms , .term {
-            font-size: 12px !important;
+/*login*/
+.login-frame , .register-frame , .payment-frame{
+    display: block;
+    width: 350px;
+    height: 402px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding : 16px ;
+}
+.payment-frame {
+    margin-top: 24px;
+    width: 382px;
+    height: 682px;
+}
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.btn-login , .btn-register , .btn-credit , .btn-confirm{
+    width: 100%;
+    background: #1A1A1A;
+    border-radius: 24px;
+    height: 44px ;
+}
+.btn-confirm {
+    margin-top: 39px;
+    cursor: pointer;
+}
+.password-frame {
+    position: relative;
+}
+.visible-password{
+    position: absolute;
+    top: 40%;
+    right: 0;
+    margin-right: 10px;
+}
+.login-title, .register-title {
+    font-weight: bold;
+    margin: 0 0 24px 0;
+}
+.form-label {
+    margin-bottom: 14px ;
+}
+.form-control {
+    padding: 11px 14px;
+    color :#C1C1C1 ;
+}
+.btn-login {
+    font-weight: bold;
+    margin : 8px 0 22px 0 ;
+} 
+.forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: underline;
+    margin : 16px 16px 10px 16px  ;
+}
+.register , .terms {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: #757575; ;
+    position: relative;
+    top:-5px
+}
+.terms , .term {
+    font-size: 12px !important;
 
-            align-items: center;
-        }
-        .terms span {
-        text-decoration: underline;
-        }
-        .register-account , .term {
-            font-size: 16px;
-            color: black;
-            margin-left: 5px;
-            cursor: pointer;
-            margin: 16px 3px;
-        }
-        .login-request {
-            display: none;
-        }
-        /*register*/ 
-        .register-frame {
-            height: 540px;
-        }
-        a {
-            color : white ; 
-            text-decoration: none;
-            
-        }
-        .navbar_login{
-            font-weight: 600;
-            color: white;
-            font-size: 14px;
-            display: flex;
-            margin-left: 80px;
-        }
-        /*Selected Credit*/ 
-        .credit-frame {
-            height: 912px; 
-            width: 382px;
-        }
-        /*frame credit*/
-        .header-credit {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-        .header-credit_title {
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .change-plan {
-            text-decoration: underline;
-        }
-        .banner-credit {
-            background: url(../image/bg_book_trial.jpg);
-            width: 100%;
-            height: 168px;
-        }
-        .banner-credit, .book-premium ,.credit-book_premium , .free-trial{
-            color: white;
-            border-radius: 8px;
-            padding : 24px 20px ;
-        }
-        .credit-book_premium{
-            background: url(../image/bg_book_premium.jpg) !important;
-            width: 100%;
-            height: 168px;
-        }
-
-        .banner-credit_header {
-            display: flex;
-            justify-content: space-between;
-        }
-        .banner-credit_title {
-            font-family: 'Roboto Slab', serif;
-            font-weight: 700;
-            font-size: 24px;
-        }
-        .banner-month{
-            /* color: white; */
-            color : rgba(255, 255, 255, 1) ;
-            text-shadow: 0px 40px 64px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            font-family: 'Roboto Slab', serif;
-        }
-        .banner-content {
-            line-height: 22px;
-            margin-left: 4px;
-            width: 295px;
-            font-family: 'Roboto Slab', serif;
-        }
-        .banner-unlock{
-            margin-top: 18px;
-            font-size: 16px;
-            display: flex;
-        }
-        .banner-unlock_route {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            margin-left: 13px;
-        }
-        .payment-title {
-            font-weight: bold;
-            font-size: 14px;
-            margin : -4px 0px 16px 0px ;
-        }
-        .select-card-item img{
-            margin:13.67px 17.33px 28.67px 0px ;
-        }
-        .btn-credit{
-            margin-top: 24px;
-            text-transform: uppercase;
-        }
-        /* Member */
-
-        .available-plan-frame{
-            margin-left: 20px;
-            width: 825px;
-            height: 549px;
-            background: #FFFFFF;
-            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
-        }
-        .member-frame {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-
-        }
-        /*Select nav responsive*/
-        .select-nav_items {
-            display: none;
-        }
-        /*available plans*/
-        .available-plan-frame {
-            padding : 16px 24px ;
-        }
-        .available-plan-select {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            
-        }
-        .free-trial {
-            background: url(../image/bg_book_trial.jpg);
-            width: 350px;
-            height: 168px;
-            border-radius: 8px;
-            margin-right: 24px;
-            background-position: center;
-        }
-        .book-premium {
-            background: url(../image/bg_book_premium.jpg);
-            width: 350px;
-            height: 168px;
-            border-radius: 8px;
-            background-position: center;
-        }
-        .btn-select_free-trial , .btn-select_book-premium {
-            border: 1px solid #FFFFFF;
-            box-sizing: border-box;
-            border-radius: 24px;
-            background: white;
-            color: black;
-            width: 100px;
-            height: 32px;
-        }
-        .btn-select_free-trial {
-            margin: 18px 0px 16px ;
-        }
-        .btn-select_book-premium {
-            margin:30px 0px 16px;
-        }
-        .banner-content_book-premium {
-            margin-top: 13px;
-        }
-        .available-plan-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            margin-bottom: 24px;
-
-        }
-        .book-premium_selects {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .book-premium_price {
-            font-weight: bold;
-            font-size: 24px;
-        }
-        /*stripe input */
-        .StripeElement {
-            padding: 11px 14px !important;
-            border: 1px solid #E8E8E8 !important ; 
-            border-radius: 6px;
-            margin: 14px 0px 16px;
-        }
-        .InputElement::placeholder {
-            color : #C1C1C1 !important ;
-            opacity: 1 !important;
-        }
-        /*responsive*/
-        @media screen and (max-width : 1100px) {
-            .available-plan-frame{
-                width: 600px;
-            }
-            .free-trial ,.book-premium  {
-                margin :20px ;
-            }
-            .available-plan-select {
-                display: flex;
-                justify-content: center;
-            }
-        }
-        @media screen and (max-width : 840px) {
-            .available-plan-frame{
-                width: 400px;
-            }
-        }
-        @media screen and (max-width: 375px) {
-            /*navbar*/
-            .navbar{ 
-                height: 52px;
-            }
-            .navbar_title {
-                font-size: 14px;
-            }
-            .navbar_login {
-                display: none;
-            }
-            .navbar-visible  {
-                display: block;
-            }
-            .navbar-login_item{
-                display: block;
-            }
-            .navbar-login_profile {
-                display: none;
-
-            }
-            /*login*/
-            .login-frame ,.register-frame{
-                padding: 20px;
-                display: block;
-                width: 100%;
-                background: #FFFFFF;
-                height: 100%;
-            }
-            .login-title , .register-title {
-                font-size: 28px;
-                font-weight: normal;
-                margin: 12px 0 20px 0;
-            }
-            .register-title {
-                font-weight: bold;
-                margin-bottom: 44px;
-            }
-
-        
-            .login-request {
-                display: block;
-                font-size: 16px;
-                color: #757575;
-                margin-bottom: 64px;
-            }
-            .card-body {
-                padding: 0;
-            }
-            .btn-login  {
-                font-weight: normal;
-                font-size: 14px;
-            }
-            .footer {
-                display: none;
-            }
-            .logout , .account {
-                margin: 16px 23px ;
-                cursor: pointer;
-                font-size: 16px;
-            }
-            /*credit*/
-            .banner-credit {
-                width: 335px;
-                height: 168px;
-                align-items: center;
-                margin: 0 auto;
-            }
-            /*available plan*/
-            .available-plan-frame{
-                width: 100% ;
-                padding: 0;
-                margin: 0 ;
-                height: 100vh;
-            }
-            .free-trial , .book-premium {
-                width: 335px;
-            }
-            /*select nav responsive*/
-            .select-nav_items {
-                display: block;
-                background: #1A1A1A;
-                width: 100%;
-                height: 72px;
-                padding: 16px 20px;
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            
-            }
-            .form-select{
-                /* background-color: #757575 !important; */
-            }
-        
-            .MuiFormControl-root  {
-                padding: 0 !important;
-                background: white;
-                margin: 0px !important;
-                border-radius: 4px;
-
-            }
-            .MuiSelect-select {
-                padding: 0!important;
-                width: 337px !important;
-                height: 40px !important;
-                border-radius: 4px !important;
-                display: flex !important;
-                align-items: center !important;
-                padding-left: 12px !important;
-                color :black !important ;
-
-            }
-            .MuiPaper-elevation {
-                left:20px !important ;
-            }
-            .MuiList-root  {
-                padding: 0px !important;
-                border-radius: 0px !important;
-            }
-            .MuiMenuItem-root {
-                color: black !important;
-                background: white !important;
-            }
-            .MuiMenuItem-root:focus {
-                background: #E8E8E8 !important;
-            }
-            .MuiOutlinedInput-notchedOutline {
-                border: 0px !important;
-            }
-            /*Available plans*/
-            .available-plan-title {
-                font-weight: bold;
-                font-size: 18px;
-                margin: 16px 20px;
-            }
+    align-items: center;
+}
+.terms span {
+text-decoration: underline;
+}
+.register-account , .term {
+    font-size: 16px;
+    color: black;
+    margin-left: 5px;
+    cursor: pointer;
+    margin: 16px 3px;
+}
+.login-request {
+    display: none;
+}
+/*register*/ 
+.register-frame {
+    height: 540px;
+}
+a {
+    color : white ; 
+    text-decoration: none;
     
-        }
+}
+.navbar_login{
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    margin-left: 80px;
+}
+/*Selected Credit*/ 
+.credit-frame {
+    height: 912px; 
+    width: 382px;
+}
+/*frame credit*/
+.header-credit {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.header-credit_title {
+    font-weight: bold;
+    font-size: 14px;
+}
+.change-plan {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.banner-credit {
+    background: url(../image/bg_book_trial.jpg) no-repeat;
+    width: 100%;
+    height: 168px;
+    background-position: center; 
 
-        /*Payment*/
-    .InputElement {
+}
+.banner-credit, .book-premium ,.credit-book_premium , .free-trial{
+    color: white;
+    border-radius: 8px;
+    padding : 24px 20px ;
+}
+.credit-book_premium{
+    background: url(../image/bg_book_premium.jpg) !important;
+    height: 168px;
+    width: 368px;
+    background-position: bottom !important;
+    margin : 0 auto ; 
+    margin-top: 16px;
+}
+
+.banner-credit_header {
+    display: flex;
+    justify-content: space-between;
+}
+.banner-credit_title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+.banner-month{
+    /* color: white; */
+    color : rgba(255, 255, 255, 1) ;
+    text-shadow: 0px 40px 64px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto Slab', serif;
+}
+.banner-content {
+    line-height: 22px;
+    margin-left: 4px;
+    width: 295px;
+    font-family: 'Roboto Slab', serif;
+}
+.banner-unlock{
+    margin-top: 18px;
+    font-size: 16px;
+    display: flex;
+}
+.banner-unlock_route {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 13px;
+}
+.payment-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin : -4px 0px 16px 0px ;
+}
+.select-card-item img{
+    margin:13.67px 17.33px 28.67px 0px ;
+}
+.btn-credit{
+    margin-top: 24px;
+    text-transform: uppercase;
+}
+/* Member */
+
+.available-plan-frame{
+    margin-left: 20px;
+    width: 825px;
+    height: 549px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+}
+.member-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+/*Select nav responsive*/
+.select-nav_items {
+    display: none;
+}
+/*available plans*/
+.available-plan-frame {
+    padding : 16px 24px ;
+}
+.available-plan-select {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.free-trial {
+    background: url(../image/bg_book_trial.jpg);
+    width: 350px;
+    height: 168px;
+    border-radius: 8px;
+    margin-right: 24px;
+    background-position: center;
+}
+.book-premium {
+    background: url(../image/bg_book_premium.jpg);
+    width: 350px;
+    height: 168px;
+    border-radius: 8px;
+    background-position: center;
+}
+.btn-select_free-trial , .btn-select_book-premium {
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background: white;
+    color: black;
+    width: 100px;
+    height: 32px;
+}
+.btn-select_free-trial {
+    margin: 18px 0px 16px ;
+}
+.btn-select_book-premium {
+    margin:30px 0px 16px;
+}
+.banner-content_book-premium {
+    margin-top: 13px;
+}
+.available-plan-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-bottom: 24px;
+
+}
+.book-premium_selects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.book-premium_price {
+    font-weight: bold;
+    font-size: 24px;
+}
+/*stripe input */
+.StripeElement {
+    padding: 11px 14px !important;
+    border: 1px solid #E8E8E8 !important ; 
+    border-radius: 6px;
+    margin: 14px 0px 16px;
+}
+.InputElement::placeholder {
+    color : #C1C1C1 !important ;
+    opacity: 1 !important;
+}
+/*erro login*/
+.error-login {
+    position: relative;
+    color: #B22222;
+    font-size: 12px;
+    margin-left: 16px;
+    top: -5px;
+}
+/*responsive*/
+@media screen and (max-width : 1100px) {
+    .available-plan-frame{
+        width: 600px;
+    }
+    .free-trial ,.book-premium  {
+        margin :20px ;
+    }
+    .available-plan-select {
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width : 840px) {
+    .available-plan-frame{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 480px) {
+    /*navbar*/
+    .navbar{ 
+        height: 52px;
+    }
+    .navbar_title {
+        font-size: 14px;
+    }
+    .navbar_login {
+        display: flex;
+    }
+    .navbar-visible  {
         display: block;
-        height: 50px;
+    }
+    .navbar-login_item{
+        display: flex;
+        margin: 0px;
+    }
+    .navbar-login_profile {
+        display: none;
+
+    }
+    /*login*/
+    .login-frame ,.register-frame{
+        padding: 20px;
+        display: block;
+        width: 100%;
+        background: #FFFFFF;
+        height: 100%;
+    }
+    .login-title , .register-title {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 12px 0 20px 0;
+    }
+    .register-title {
+        font-weight: bold;
+        margin-bottom: 44px;
+    }
+
+
+    .login-request {
+        display: block;
+        font-size: 16px;
+        color: #757575;
+        margin-bottom: 64px;
+    }
+    .card-body {
+        padding: 0;
+    }
+    .btn-login  {
+        font-weight: normal;
+        font-size: 14px;
+    }
+    .footer {
+        display: none;
+    }
+    .logout , .account {
+        margin: 16px 23px ;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    /*credit*/
+    .banner-credit {
+        width: 335px;
+        height: 168px;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 16px;
+    }
+    /*available plan*/
+    .available-plan-frame{
+        width: 100% ;
+        padding: 0;
+        margin: 0 ;
+        height: 100vh;
+    }
+    .free-trial , .book-premium {
+        width: 335px;
+    }
+    .header-credit {
+        padding: 20px 20px 0px;
+    } 
+    /*select nav responsive*/
+    .select-nav_items {
+        display: block;
+        background: #1A1A1A;
+        width: 100%;
+        height: 72px;
+        padding: 16px 20px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    
+    }
+    .form-select{
+        /* background-color: #757575 !important; */
+    }
+    /*purchase*/ 
+    .credit-frame {
         width: 100%;
     }
+    .payment-frame {
+        width: 100%;
+        box-shadow: none;
+    }
+    /*MUI select menu */
+    .MuiFormControl-root  {
+        padding: 0 !important;
+        background: white;
+        margin: 0px !important;
+        border-radius: 4px;
+
+    }
+    .MuiSelect-select {
+        padding: 0!important;
+        width: 337px !important;
+        height: 40px !important;
+        border-radius: 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding-left: 12px !important;
+        color :black !important ;
+
+    }
+    .MuiList-root  {
+        padding: 0px !important;
+        border-radius: 0px !important;
+    }
+    .MuiMenuItem-root {
+        color: black !important;
+        background: white !important;
+    }
+    .MuiMenuItem-root:focus {
+        background: #E8E8E8 !important;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border: 0px !important;
+    }
+
+    /*Available plans*/
+    .available-plan-title {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 16px 20px;
+    }
+    .no-changePlan {
+        display: none;
+    }
+
+}
+
+/*Payment*/
+.InputElement {
+display: block;
+height: 50px;
+width: 100%;
+}
+/*animation*/ 

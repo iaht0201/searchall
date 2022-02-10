@@ -25,7 +25,7 @@
     display: none;
 }
 .iconProfile {
-    margin-right: 10px;
+    margin-right: 25px;
 }
 /*footer*/
 .footer {
@@ -84,7 +84,27 @@ li {
     cursor: pointer;
 }
 /*payment*/
-
+/* cancel and confirm*/
+.frame-confirm {
+    width: 484px;
+    height: 315px;
+    text-align: center;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding: 31px 24px;
+    
+}
+.confirm-title {
+    margin: 24px 0px 12px 0px;
+    font-weight: bold;
+    
+}
+.btn-confirm {
+    text-transform: uppercase;
+}
+.confirm-content {
+    /* padding: 5px; */
+}
 @media screen and (max-width : 900px) {
     .selected-navbar{
         width: 200px;
@@ -93,6 +113,15 @@ li {
 @media screen and (max-width : 900px) {
     .selected-navbar{
         display: none;
+    }
+    .btn-confirm {
+        margin-top: 15px !important;
+    }
+}
+@media screen and (max-width : 480px) {
+    .frame-confirm {
+        width: 335px;
+        height: 340px;
     }
 }
 /*Loading Effect*/

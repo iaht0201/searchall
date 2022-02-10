@@ -13,8 +13,6 @@ export default function Header({
   handleLogin,
   type,
 }) {
-  const [typea, setTypea] = useState(type);
-  console.log(typea);
   return (
     <CardHeader className="navbar">
       <div className="container">
@@ -32,10 +30,7 @@ export default function Header({
           <div className="navbar_login navbar-login_item">
             <img src={iconProfile} alt="iconProfile" className="iconProfile" />
             <div className="navbar-login_profile">Profile </div>
-          </div>
-
-        )}
-        {togglenav ? (
+            {togglenav ? (
           <img
             src={navbarhiden}
             alt="navbar"
@@ -50,6 +45,10 @@ export default function Header({
             onClick={toggleVissiblityNavbar}
           />
         )}
+          </div>
+
+        )}
+      
       </div>
     </CardHeader>
   );

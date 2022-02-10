@@ -35,13 +35,12 @@ export default function RegisterForm() {
     });
     respon = await respon.json();
     if (respon.success) {
-      localStorage.setItem("user-infor" ,JSON.stringify(respon) )
+      localStorage.setItem("user-infor", JSON.stringify(respon));
       history.push("/member");
     } else {
       setError(respon.error);
     }
-    console.log(respon);
-    // 
+    //
   };
   const [name, setName] = useState("");
   const [fullname, setFullName] = useState("");
@@ -49,22 +48,10 @@ export default function RegisterForm() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password_confirmation, setPassword_confirmation] = useState("");
-  // const handleRegistera = () => {
-  //   // e.preventDefault();
-  //   let data = {
-  //     fullname,
-  //     email,
-  //     password,
-  //   };
-  //   fullname !== "" && email !== "" && password !== ""
-  //     ? setUsers(data)
-  //     : alert({ erro });
-  // };
 
   const [passwordShow, setPasswordShow] = useState(false);
   const [togglenav, setTogglenav] = useState(true);
   const toggleVisiblityPassword = () => {
-    console.log(passwordShow);
     setPasswordShow(passwordShow ? false : true);
   };
   const toggleVissiblityNavbar = () => {

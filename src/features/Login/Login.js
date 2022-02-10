@@ -38,8 +38,6 @@ export default function LoginForm() {
   async function handleLogin() {
     console.warn(email, password);
     let item = { email, password };
-    console.log(item);
-    console.log(JSON.stringify(item));
     let respon = await fetch("http://44.193.147.154:8080/api/auth/login", {
       method: "POST",
       headers: {
@@ -49,7 +47,6 @@ export default function LoginForm() {
       body: JSON.stringify(item),
     });
     respon = await respon.json();
-    console.log(respon);
     if (respon.success) {
       localStorage.setItem("user-infor", JSON.stringify(respon));
       history.push("/member");
@@ -72,7 +69,6 @@ export default function LoginForm() {
               <div className="login-title"> Login </div>
               <div className="login-request "></div>
               <FormGroup>
-                <div className="error-login">{error}</div>
                 <Label for="exampleEmail">Your Email</Label>
 
                 <Input
@@ -107,6 +103,7 @@ export default function LoginForm() {
                 </div>
               </FormGroup>
               <div className="forgot-password">Forgot password?</div>
+              <div className="error-login">{error}</div>
               <Button className="btn-login" onClick={handleLogin}>
                 Login
               </Button>{" "}

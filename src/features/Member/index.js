@@ -39,7 +39,6 @@ export default function Index() {
       .then((data) => {
         setName(data.name);
         setUserPlan(data.userPlan);
-        console.log("data.userPlan", data.userPlan);
         setLoading(false);
       });
   }
@@ -73,7 +72,7 @@ export default function Index() {
           <Footer />
         </Card>
       ) : (
-        <Loading/>
+        <Loading />
       )}
     </Fragment>
   );

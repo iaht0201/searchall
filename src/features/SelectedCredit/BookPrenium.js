@@ -31,6 +31,7 @@ export default function BookPremium() {
     setTogglenav(togglenav ? false : true);
   };
   const history = useHistory();
+  const [unlock, setUnlock] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const [price] = useState("price_1JtogXB3ETQpYPYdhWMEajJ2");
@@ -47,17 +48,15 @@ export default function BookPremium() {
     const result = await stripe.createToken(card);
     if (!error) {
       const { id } = paymentMethod;
-      console.log(id);
-      console.log("result", result.token.id);
+
       // setCard_token(result.token.id);
       card_token = result.token.id;
-      console.log("token1", card_token);
     }
 
     /*fetch */
 
     const token = JSON.parse(localStorage.getItem("user-infor")).data;
-    console.log("token", token);
+
     let param = { card_token, price };
     await fetch("http://44.193.147.154:8080/api/auth/payment", {
       method: "POST",
@@ -89,7 +88,11 @@ export default function BookPremium() {
         {togglenav ? (
           <CardBody>
             <div className="credit-frame">
-              <div className="header-credit">
+              <div
+                className={`header-credit ${
+                  unlock ? "no-changePlan" : "changePlan"
+                }`}
+              >
                 <div className="header-credit_title">Your plan</div>
                 <div className="change-plan">Change plan</div>
               </div>
@@ -105,11 +108,21 @@ export default function BookPremium() {
                 </div>
                 <div className="banner-unlock">
                   <img src={ArrowDown} alt="unlock" />
-                  <div className="banner-unlock_route"> Unlock</div>
+                  <div
+                    className="banner-unlock_route"
+                    onClick={() => setUnlock(true)}
+                  >
+                    {" "}
+                    Unlock
+                  </div>
                 </div>
               </div>
 
-              <Form className="payment-frame">
+              <Form
+                className={`payment-frame ${
+                  !unlock ? "no-changePlan" : "changePlan"
+                }`}
+              >
                 <div className="payment-title"> Payment method </div>
                 <div className="select-cards">
                   <div className="selecr-card_title"> Credit or debit card</div>

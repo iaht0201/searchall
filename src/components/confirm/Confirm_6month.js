@@ -41,10 +41,9 @@ export default function ConfirmSixMonth() {
               <img src={ConfirmImg} alt="confirm" />
               <div className="confirm-title">You’re Book Premium now!</div>
               <div className="confirm-content">
-                Your purchase is complete. You can cancel anytime by going to
-                your Account.
+              Your purchase is complete. You can cancel anytime by going to your Account.
               </div>
-              <Button className="btn-login" onClick={route}>back to profile</Button>{" "}
+              <Button className="btn-confirm " onClick={route}>back to profile</Button>{" "}
             </div>
           </CardBody>
         ) : (
